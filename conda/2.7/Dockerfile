@@ -7,7 +7,6 @@ RUN opkg-install bash bzip2 zlib git cmake check
 ADD conda_install.sh /root/conda_install.sh
 RUN ["bash", "/root/conda_install.sh"]
 ENV PATH /root/miniconda/bin:$PATH
-RUN apt-get update && apt-get install -y curl
 RUN conda update -y conda
 # Python packages from conda
 RUN conda install -y \
@@ -18,22 +17,6 @@ RUN conda install -y \
     cython \
     wxpython \
     
-    
-RUN apt-get update && apt-get install -y curl
-
-# Install miniconda to /miniconda
-RUN curl -LO http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
-RUN bash Miniconda-latest-Linux-x86_64.sh -p /miniconda -b
-RUN rm Miniconda-latest-Linux-x86_64.sh
-ENV PATH=/miniconda/bin:${PATH}
-RUN conda update -y conda
-
-# Python packages from conda
-RUN conda install -y \
-    scikit-image \
-    flask \
-    pillow
-
 
 RUN git clone git://github.com/OpenPTV/openptv.git
 RUN mkdir openptv/liboptv/build
