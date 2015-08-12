@@ -3,7 +3,7 @@
 
 FROM progrium/busybox
 MAINTAINER Alex Liberzon
-RUN opkg-install bash bzip2 zlib git cmake check
+RUN opkg-install bash bzip2 zlib git check
 ADD conda_install.sh /root/conda_install.sh
 RUN ["bash", "/root/conda_install.sh"]
 ENV PATH /root/miniconda/bin:$PATH
@@ -15,7 +15,8 @@ RUN conda install -y \
     pillow \
     chaco  \
     cython \
-    wxpython
+    wxpython \
+    cmake
     
 
 RUN git clone git://github.com/OpenPTV/openptv.git
