@@ -15,7 +15,7 @@ RUN conda install -y \
     pillow \
     chaco  \
     cython \
-    wxpython \
+    wxpython
     
 
 RUN git clone git://github.com/OpenPTV/openptv.git
